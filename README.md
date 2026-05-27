@@ -1,14 +1,25 @@
-# Project
+# microsoft/homebrew-sparrow-engine — Homebrew tap for the sparrow-engine CLI
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+Tap for the [sparrow-engine](https://github.com/microsoft/Pytorch-Wildlife) ML inference CLI — single-binary install of the camera-trap species detection + audio classification engine.
 
-As the maintainer of this project, please make a few updates:
+## Install
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+```bash
+brew tap microsoft/sparrow-engine
+brew install sparrow-engine
+spe --version
+spe device     # active inference device, e.g. {"device":"cpu"}
+```
+
+See the [user manual](https://github.com/microsoft/Pytorch-Wildlife/blob/sparrow-engine-dev/docs/user-manual.md) for full CLI usage.
+
+## What this provides
+
+A single brew-managed `spe` binary for macOS arm64 + brew-Linux x86_64, with bundled `libonnxruntime` inside the keg — no separate `pip install onnxruntime` required. The tarball matrix originates at the [sparrow-engine GitHub Releases](https://github.com/microsoft/Pytorch-Wildlife/releases) (per RP-4 / Path B); this tap is a thin distribution surface that pins SHA256 checksums to those release assets.
+
+## Formula source of truth
+
+The canonical formula lives in the source repo at [`installer/homebrew/sparrow-engine.rb`](https://github.com/microsoft/Pytorch-Wildlife/blob/sparrow-engine-dev/installer/homebrew/sparrow-engine.rb). Each release bump fetches `.sha256` sidecars from the GH Release, substitutes them in, and pushes the updated formula here. The operator runbook lives at [`installer/homebrew/README.md`](https://github.com/microsoft/Pytorch-Wildlife/blob/sparrow-engine-dev/installer/homebrew/README.md) upstream.
 
 ## Contributing
 
