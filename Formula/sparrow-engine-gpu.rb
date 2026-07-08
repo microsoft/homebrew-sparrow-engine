@@ -1,16 +1,16 @@
 class SparrowEngineGpu < Formula
   desc "Camera-trap ML inference engine — GPU (NVIDIA CUDA) CLI binary"
-  homepage "https://github.com/microsoft/Pytorch-Wildlife"
+  homepage "https://github.com/microsoft/SPARROW-Engine"
+  version "0.1.21"
   license "MIT"
-  version "0.1.10"
 
   # Linux x86_64 only — NVIDIA CUDA does not exist on macOS, and Linux aarch64
   # has no matching tarball in the RP-4 release matrix. macOS users wanting
   # local inference install `sparrow-engine` (CPU formula) instead.
   on_linux do
     on_intel do
-      url "https://github.com/microsoft/Pytorch-Wildlife/releases/download/v#{version}/sparrow-engine-gpu-#{version}-linux-x86_64.tar.gz"
-      sha256 "51fe506b92d9e55e167cb4717a3444b5a305414225877ec6511d285aca1e26d0"
+      url "https://github.com/microsoft/SPARROW-Engine/releases/download/v#{version}/sparrow-engine-gpu-#{version}-linux-x86_64.tar.gz"
+      sha256 "bd58057dddfbaacff8fcf4907b166d77358c08307d763c2558980677601e4169"
     end
   end
 
@@ -42,7 +42,7 @@ class SparrowEngineGpu < Formula
         spe-gpu device       # expected: {"device":"cuda:0"}
 
       Full GPU install path:
-        https://github.com/microsoft/Pytorch-Wildlife/blob/sparrow-engine-dev/docs/user-manual.md
+        https://github.com/microsoft/SPARROW-Engine/blob/main/docs/user-manual.md
 
       The tarball is ~256 MB — bundles libonnxruntime + ORT CUDA provider
       sidecars. NVIDIA-managed shared libraries (cuDNN / cuBLAS / nvJPEG /
