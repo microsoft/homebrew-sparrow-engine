@@ -1,7 +1,7 @@
 class SparrowEngine < Formula
   desc "Camera-trap ML inference engine (sparrow-engine CLI binary)"
   homepage "https://github.com/microsoft/SPARROW-Engine"
-  version "0.1.21"
+  version "0.1.28"
   license "MIT"
 
   # RP-4 (2026-05-26): the formula points at the GH Release tarballs produced
@@ -21,14 +21,14 @@ class SparrowEngine < Formula
   on_macos do
     on_arm do
       url "https://github.com/microsoft/SPARROW-Engine/releases/download/v#{version}/sparrow-engine-cpu-#{version}-macos-aarch64.tar.gz"
-      sha256 "8339e9a9e0079fb46e199e4b86e3a5f2857cf863b08cd8d94953253e7f6e657a"
+      sha256 "9cee9eba261b5e4f19472f2972210e1ef6d02d08b02cedc4ee347672f67c5c6c"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/microsoft/SPARROW-Engine/releases/download/v#{version}/sparrow-engine-cpu-#{version}-linux-x86_64.tar.gz"
-      sha256 "58ad2c8b37ea5b83471bf015116e38e48f32b6f5202b46e4e3fecf1a10a49524"
+      sha256 "fbf8e189b041d1218cc291b933cbda4807380278ef3a757980bc65e3431a7ebc"
     end
   end
 
