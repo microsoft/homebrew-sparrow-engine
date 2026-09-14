@@ -1,7 +1,7 @@
 class SparrowEngineGpu < Formula
   desc "Camera-trap ML inference engine — GPU (NVIDIA CUDA) CLI binary"
   homepage "https://github.com/microsoft/SPARROW-Engine"
-  version "0.1.28"
+  version "0.1.29"
   license "MIT"
 
   # Linux x86_64 only — NVIDIA CUDA does not exist on macOS, and Linux aarch64
@@ -10,7 +10,7 @@ class SparrowEngineGpu < Formula
   on_linux do
     on_intel do
       url "https://github.com/microsoft/SPARROW-Engine/releases/download/v#{version}/sparrow-engine-gpu-#{version}-linux-x86_64.tar.gz"
-      sha256 "9b02f47dfb4e7c9235f8b4436890fca7b302088a21414815ab82d221d5f0cc20"
+      sha256 "a80992bd9b50b080d62b2f40ea0a9dde0418833b07aeb4765c2c8fb875217b2e"
     end
   end
 
