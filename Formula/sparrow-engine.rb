@@ -13,10 +13,19 @@ class SparrowEngine < Formula
   #   ├── README.md
   #   └── VERSION
   #
-  # SHA256 placeholders MUST be replaced before tap publish — the cut-release
-  # script fetches the .sha256 sidecars from the GH Release and substitutes
-  # them in. Until then, this formula will not install (brew validates the
-  # checksum before unpacking).
+  # This file is a TEMPLATE, not a directly installable formula. Two fields are
+  # release-managed:
+  #   * version — tracks the current package/release version (0.1.29 here). CI
+  #     guards it against sparrow-engine-cli/Cargo.toml in
+  #     .github/workflows/release.yml § check-version-consistency, and the
+  #     contract test sparrow-engine/scripts/tests/test_installers.sh asserts the
+  #     same locally, so it cannot silently drift.
+  #   * sha256 — REPLACE_WITH_* placeholders. The cut-release / tap-publish flow
+  #     (installer/homebrew/README.md § Bootstrapping) fetches the .sha256
+  #     sidecars from the GH Release and substitutes them into the tap-repo copy.
+  #     Until then this formula will not install (brew validates the checksum
+  #     before unpacking), so the in-repo template is never mistaken for an
+  #     installable formula.
 
   on_macos do
     on_arm do
@@ -51,6 +60,17 @@ class SparrowEngine < Formula
     # in-binary ort_resolver path. If the resolver didn't find lib/, the
     # subsequent device subcommand would fail at ORT init — keeping the test
     # tight to --version so it's fast and dep-free.
-    assert_match version.to_s, shell_output("#{bin}/spe --version")
+    #
+    # Shape-check (paired with sparrow-engine-gpu.rb for symmetry):
+    # `spe --version` is emitted by clap from the const
+    #   sparrow-engine-cli/src/main.rs:43
+    #   `const VERSION: &str = concat!(env!("CARGO_PKG_VERSION"), " (CPU flavor)");`
+    # so the output shape is `spe X.Y.Z (CPU flavor)`. The regex catches both
+    # (a) Phase E B-03-style drift where the binary stops reporting cargo-pkg-
+    # version dynamically and (b) any rename/reshape of the version string.
+    # We deliberately do NOT pin to `version.to_s` because the formula header
+    # `version` is bumped only on release-cut and lags the cargo crate version
+    # between bumps; pinning would break brew CI on every cargo-side bump.
+    assert_match(/\Aspe \d+\.\d+\.\d+ \(CPU flavor\)\Z/, shell_output("#{bin}/spe --version").strip)
   end
 end
