@@ -1,7 +1,7 @@
 class SparrowEngine < Formula
   desc "Camera-trap ML inference engine (sparrow-engine CLI binary)"
   homepage "https://github.com/microsoft/SPARROW-Engine"
-  version "0.1.31"
+  version "0.1.32"
   license "MIT"
 
   # RP-4 (2026-05-26): the formula points at the GH Release tarballs produced
@@ -15,7 +15,7 @@ class SparrowEngine < Formula
   #
   # This file is a TEMPLATE, not a directly installable formula. Two fields are
   # release-managed:
-  #   * version — tracks the current package/release version (0.1.31 here). CI
+  #   * version — tracks the current package/release version (0.1.32 here). CI
   #     guards it against sparrow-engine-cli/Cargo.toml in
   #     .github/workflows/release.yml § check-version-consistency, and the
   #     contract test sparrow-engine/scripts/tests/test_installers.sh asserts the
@@ -30,14 +30,14 @@ class SparrowEngine < Formula
   on_macos do
     on_arm do
       url "https://github.com/microsoft/SPARROW-Engine/releases/download/v#{version}/sparrow-engine-cpu-#{version}-macos-aarch64.tar.gz"
-      sha256 "db21fd3e4a82049a9f944a42ffeb0f29efb45e99f7039c0336a38241968a9a9d"
+      sha256 "dcd4f19d249d05c01c74028ae740f25ada932f5813a2be7f1b60a1e952f8e5a8"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/microsoft/SPARROW-Engine/releases/download/v#{version}/sparrow-engine-cpu-#{version}-linux-x86_64.tar.gz"
-      sha256 "fbc4ca54b84cd09e1b70c32845710bb75c7c817842015d9173e94c72ea3c5cad"
+      sha256 "ce87bfe2488628847b42875852fa5c0c0760ffebbbfe1e8093eead4607a13226"
     end
   end
 
